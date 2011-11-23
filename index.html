@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Research, National library of the Netherlands, KB, Koninklijke Bibliotheek" />
+    <meta name="author" content="René van der Ark, Willem Jan Faber" />
+    <meta name="Keywords" content="Research, National library of the Netherlands, KB, Koninklijke Bibliotheek, digital library, OAI, SRU, research, open source, GNU, Java, Pyhton, Ruby, NER, Stanford, opennlp, example, code, NoSql, SKOS, XML, XSL, xsltproc, jsonp, AJAX, ALTO, Autocomplete, SOLR, Lucene, DIDL, MongoDB, experimental, RDF, OCR, LOD, Linked open data, SIWA, JSONP, DIDL, Crowdsourcing" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>KBresearch</title>
+    <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+    <link href="kbresearch.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+    <script type="text/javascript">
+    $(function() {
+        $('.show').lightBox();
+    });
+    </script>
+
+</head>
+
+<body>
+
+<div id="main">
+
+<a href="http://www.kb.nl/">
+<img src="img/logo_kb.jpg" style="float: left;" alt="kb logo" /></a>
+
+
+<a href="http://www.kbresearch.nl/"><img src="img/lab.png" style="float: right" width="100" alt="lab" />
+</a><h1>KBresearch</h1><br/><br/><br/><br/><br/>
+<a href="#">KB Research</a> &nbsp; <a href="http://stitchplus.kbresearch.nl">STITCHPlus</a>
+<br/>
+<hr/>
+<br/>
+<br/>
+
+<h2>About</h2>
+<p>
+<a class="show" href="img/drawing.png"><img src="img/drawing.png" style="width: 200px; float: right" alt="overview"/></a>
+
+This page describes some of the digital library research projects of the <a href="http://kb.nl/index-en.html">National library of the Netherlands</a> (KB). The research topics range from indexing up to 20 million metadata records, to entity extraction and recognition. Techniques used to perform these experiments involve SRU, OAI, RDF, SKOS, DC, ALTO, XML, XSL and other protocols, schema's and methods common to digital libraries. The research was conducted over the course of three years starting in 2009. The prime suspects of this research are <a href="mailto:Theo.vanVeen@kb.nl">Theo van Veen</a>, <a href="mailto:rene.vanderArk@kb.nl">René van der Ark</a> and <a href="mailto:willemjan.faber">Willem Jan Faber</a>. Most of the research relied on open source software, therefore we have decided to give software back to the community and publish our prototypes on <a href="https://github.com/STITCHplus/">GitHub</a> with a <a href="https://www.gnu.org/copyleft/gpl.html">GNU licence</a> (all externals have their own licence). The main part of this research was funded by the KB and some research was funded by <a href="http://www.catchplus.nl/en/">STITCHPlus</a>.
+
+</p>
+
+<br/>
+<h2>Solr/Lucene to replace Verity search engine</h2>
+<p>The main purpose of this research was to investigate possibilities for using the open source search engine SOLR/Lucene to replace the old proprietary search engine of the KB. This research focused on the stability, indexing speed, query speed, and query possibilities of SOLR/Lucene.<br/>
+<a class="show" href="https://github.com/STITCHplus/autoComplete/raw/master/screenshot.png"><img src="img/auto.png" style="width: 200px; float: left" alt="autocompletion"/></a>
+By <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/GenericSolrSetup">indexing</a> a large quantity of documents using SOLR/Lucene we were able to prove that the setup could handle a significant amount of data and still be very responsive at query time. In order to be able to index such a large number of documents we had to develop an <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/OAI_harvester_java_xslt">OAI-MPH harvester</a> that transformed the documents from Dublin Core format to SOLR/Lucene format.<br/> To control the harvesting process, a simple <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/OAI_harvester_console">harvesting console</a> was created to select the collections and to monitor progress.
+In order to integrate SOLR/Lucene into the architectural design of the KB an <img src="img/source.png" alt="source code"/><a href="https://github.com/STITCHplus/kbSRU">SRU interface</a> was developed, which, among other things, was used for a <img src="img/demo.png" alt="demo"/><a href="http://www.kbresearch.nl/mobileSearch/">mobile search application</a> to interact with end users. One of the requests was to have <img src="img/demo.png" alt="demo"/><a href="http://www.kbresearch.nl/autocompletion">auto-completion</a> for specific collections. To show that this was possible an <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/autoComplete">auto-completion prototype</a> was created. Furthermore several options where tried in the SRU implementation, like the ability to respond with a <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/kbSRU/blob/master/src/kbSRU/kbSRU.java#LC582">suggestion</a> or <img src="img/demo.png" alt="demo" /><a href="http://www.kbresearch.nl/mobileSearch/search?q=aaamsterdams&amp;startrecord=1">did u mean</a> in SRU, and some effort was put into working with <img src="img/xml.png" alt="xml" /><a href="http://www.kbresearch.nl/kbSRU/?q=creator_str%20=%20%22Wolkers,%20Jan%22&amp;x-collection=GGC&amp;facet=contributor_str&amp;maximumRecords=1">facets</a> on SRU level. After showing the capabilities of SOLR/Lucene, the KB decided to move from their proprietary search engine to SOLR/Lucene and switch from Microsoft Windows to RedHat Linux for performance reasons.
+<br/><br/></p>
+
+<h2>Spreading KB created profile-dossiers</h2>
+<p>
+<a class="show" href="http://dcr.bibliotheek.nl/binaries/content/gallery/widgetstore/screenshots/kb-dossiers/dossiers-kb.jpg"><img src="img/dos.png" style="width: 200px; float: right" alt="autocompletion" /></a>
+In order to reach a larger audience with KB created content, an <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/kbDOS">experiment</a> was conducted in cooperation with bibliotheek.nl. The idea was to ingest relevant content into the digital repository of bibliotheek.nl, and show the profiles in an <img src="img/demo.png" alt="demo" /><a href="http://widgetstore.bibliotheek.nl/widgets/bnl-dossierartikelbrowser.html">other context</a>. A simple format was agreed upon to transfer the data for initial ingestion.<br/><br/></p>
+<h2>Collection enrichment</h2>
+<p>To create a greater value for our collections we have tested different approaches to enhance scanned OCR text, and adding extra (thesaurus-) identifiers to OCR'ed texts. The first thing we did was determine the relevance of all the entries in our thesaurus by counting the frequency of occurrence in our general collection. By knowing the <img src="img/xml.png" alt="xml" /><a href="http://tomcat1.kbresearch.nl/solr/ggc-thes-count/select/?q=landbouw&amp;sort=ggchits_int%20desc&amp;fl=prefLabel_str,ggchits_int,id">relevance of the terms</a> in our thesaurus we could use this for ranking in related experiments.  To correct OCR in the first approach we tried to <img src="img/xml.png" alt="xml" /><a href="http://www.kbresearch.nl/tpta/analyse?url=http://resolver.kb.nl/resolve?urn=anp:1981:08:09:3:mpeg21:ocr">extract</a> <a href="http://www.kbresearch.nl/analyse.py?url=http://resolver.kb.nl/resolve?urn=anp:1981:08:09:3:mpeg21:ocr">named</a> entities from poor OCR text, and <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/badOCR/blob/master/harvest_raar_thes.py#LC30">introduce spelling errors</a> (the same way they are introduced in the poor OCR) into the thesaurus, to cancel out the spelling errors found in the original text. This approach produced dissatisfying results because the named entity extractor was not able to work with corrupted OCR. <br/>In the second approach, we worked the other way around, iterating over all the misspelled entries in our thesaurus and search in the poor OCR documents. This resulted in a more accurate recognition of named entities in the corrupted OCR. We also tested several named entity extractors, including <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/named_entity_recognition">Stanford</a>, <img src="img/source.png"  alt="source code" /><a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.13_text_analysis_and_event_extraction/OpenNLPServlet">OpenNLP</a> and <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/nltk_analyse">NLTK</a> against a <img src="img/source.png" alt="source code"/><a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.13_text_analysis_and_event_extraction/naiveNE">benchmark extractor</a>. Evaluation of named entity extraction was done using the decision mechanism as depiction on the right. This led to the following <img src="img/demo.png" alt="demo"/><a href="http://kbresearch.nl/general/resources/anp_stats_1000.txt">scores</a> and <img src="img/demo.png" alt="demo" /><a href="img/precrec_ne_extract.xls">precision recall numbers</a>.<br/>
+<a href="img/decision-tree-NE.png" class="show"><img src="img/decision-tree-NE.png" style="width: 200px; float: left" alt="decision tree" /></a>
+In order to represent the recognized entities in a document we have setup a key-value store backend (first couchdb, later mongodb), which is used to <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/SRU_inject">inject</a> extra identifiers into SRU responses, the extra information is wrapped into an <img src="img/xml.png" alt="xml" /><a href="http://tomcat.kbresearch.nl/kbSRU/?x-collection=ANP&amp;operation=searchRetrieve&amp;version=1.1&amp;query=amsterdam&amp;startRecord=1&amp;maximumRecords=1&amp;recordSchema=dcx">dc:expand</a> block. This makes it possible to separate the original collection from the extra identifiers that belong to the collection. Additionally we have <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.9.2_enrich_doc">added</a> LOD identifiers to our own thesauri.<br/>
+A <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.13_text_analysis_and_event_extraction">different kind</a> of enriching documents is looking at <img src="img/demo.png" alt="demo" /><a href="http://kbresearch.nl/general/events/event?event_words=overstromingen+in&amp;format=html&amp;analyzer=naiveNE&amp;rows=5">events</a> occurred in history, this will result in getting to know when an event happened, and will extract the <img src="img/demo.png" alt="demo" /><a href="http://kbresearch.nl/general/events/visual/?url=http%3A%2F%2Fresolver.kb.nl%2Fresolve%3Furn%3Danp%3A1973%3A10%3A07%3A25%3Ampeg21&amp;event_words=overstromingen+in&amp;analyzer=naiveNE">involved parties.</a> Even more fancy results will show up when <img src="img/demo.png" alt="demo" /><a href="http://kbresearch.nl/general/events/fast_map/GGC-THES:AC:078958350">combining</a> this with an LOD provider like GEOnames. To get a sense of how frequent things occurred over time a <img src="img/demo.png" alt="demo" /><a href="http://kbresearch.nl/general/timeline/?q=cuba">timeline view</a> was made.
+<br/><br/>
+</p>
+<br/>
+
+<h2>Enhanced search experience</h2>
+<p>In order to enhance the search experience of our users, we have <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/expandIndex">re-indexed</a> one of our collections and added LOD information to our collection index, as well as our own known spelling variants of authors. This enables users to search for persons and places without having to know the preferred term that was entered by the librarian classifying the document.<br/>
+Furthermore, the use of Linked Data enables us to search collections in a semantic way, without the need of adding extra information to the collection, as long as the collection uses the KB thesauri for classification. To integrate semantic search with regular searching a new command was added to the <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/kbSRU/blob/master/src/kbSRU/kbSRU.java#LC176">SRU search layer</a>, the expression [ indicates a <img src="img/xml.png" alt="xml" /><a href="http://www.kbresearch.nl/kbSRU/?q=[skos.broader%20natuurkundigen]">semantic (skos:broader) search</a> and is <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/STITCHplus/blob/master/snippets/cql.rb">parsed to a sparql query</a> to return the <img src="img/xml.png" alt="xml" /><a href="http://kbresearch.nl/general/sparql/cql.json?q=skos.broader%20all%20[onto.luceneQuery=%22skos.broader%20natuurkundigen%22]&amp;fields=uri,ppn">relevant identifiers</a>. The semantic search part is resolved into <img src="img/xml.png" alt="xml" /><a href="http://www.kbresearch.nl/tripple.cgi?query=skos.broader%20natuurkundigen">multiple related identifiers</a>, these identifiers are used to do a regular search in SOLR/Lucene. To enable the semantic way of searching, we have installed OWLIM (a triple store backend with SPARQL and Lucene indexing support) and loaded our thesaurus in SKOS format.<br/><br/></p>
+
+<h2>User generated content</h2>
+<a class="show" href="img/tagall.jpg"><img src="img/tagall.jpg" style="width: 200px; float: right" alt="autocompletion" /></a>
+<p>One of the main reasons to use crowd-sourced information is that the users feel more engaged with the material at hand, also it helps users to find documents that would otherwise not be found. For there reasons the <img src="img/demo.png" alt="demo" /><a href="http://opendatachallenge.kbresearch.nl/">semantic tagger</a> was <img src="img/source.png" alt="source code" /><a href="http://opendatachallenge.kbresearch.nl/">created.</a> The crowd could provide useful to help us <img src="img/source.png" alt="source code" /><a href="https://github.com/impactcentre/alto-editor">fix poor OCR</a>, for this purpose an <img src="img/demo.png" alt="demo" /><a href="http://kbresearch.nl/alto_edit_v2/?urn=dpo:856:mpeg21:0005">OCR corrector tool</a> was written. Another way we used crowd-sourced content is by tapping into the wisdom of clouds via an <img src="img/demo.png" alt="demo" /><a href="http://data.kbresearch.nl/">LOD bridge.</a> The LOD bride provides us an <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/easy_linked_open_data_access">easy way to</a> access information scattered over the semantic web via a single URI.<br/><br/></p>
+
+
+<h2>Putting it all together</h2>
+<a class="show" href="img/tpportal.jpg"><img src="img/tpportal_small.jpg" style="width: 120px; float: left" alt="tagall" /></a>
+<p>In order to show all these different experiments as a whole we used a fork of the <img src="img/demo.png" alt="demo" /><a href="http://www.kbresearch.nl/tpportal/">TELplus portal</a>, which enabled us to build small modular services that could be hooked up to the portal. The portal works with <img src="img/demo.png" alt="demo" /><a href="http://www.kbresearch.nl/tpxslt/?xml=http://www.kbresearch.nl/SIWA/ServiceDescription1.4.xsd&amp;xsl=http://www.kbresearch.nl/SIWA/schema2text.xsl">SIWA</a> and thus makes it easy to plug-in new services that were developed. Since a lot of information in libraries comes in XML form and transformations for specific views are often needed we made an <img src="img/source.png" alt="source code" /><a href="https://github.com/STITCHplus/XSLTproxy">XSLT proxy</a>, which works via HTTP with an input XML as source, an XSL document as second parameter to <img src="img/demo.png" alt="demo" /><a href="http://www.kbresearch.nl/tpxslt/?xml=http://www.kbresearch.nl/SIWA/ServiceDescription1.4.xsd&amp;xsl=http://www.kbresearch.nl/SIWA/schema2text.xsl">transform documents.</a>. Some of the research conducted here will be implemented in the next generation <img src="img/demo.png" alt="demo" /><a href="http://prtl.kbresearch.nl/">library portal</a> that the KB is building.
+<br/><br/></p>
+
+<h2>Used techniques, software and buzzwords</h2>
+<p>
+AJAX: Asynchronous JavaScript and XML, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Ajax_%28programming%29">https://secure.wikimedia.org/wikipedia/en/wiki/Ajax_(programming)</a><br/>
+ALTO: Analyzed Layout and Text Object, <a href="http://www.loc.gov/standards/alto/">http://www.loc.gov/standards/alto/</a><br/>
+Autocomplete: <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Autocomplete">https://secure.wikimedia.org/wikipedia/en/wiki/Autocomplete</a><br/>
+CouchDB: Apache CouchDB, document-oriented database, <a href="https://couchdb.apache.org/">https://couchdb.apache.org/</a><br/>
+Crowdsourcing: the act of sourcing tasks, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Crowdsourcing">https://secure.wikimedia.org/wikipedia/en/wiki/Crowdsourcing</a><br/>
+DIDL: Digital Item Declaration Language, <a href="http://xml.coverpages.org/mpeg21-didl.html">http://xml.coverpages.org/mpeg21-didl.html</a><br/>
+Dublin Core: metadata terms are a set of vocabulary terms, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Dublin_core">https://secure.wikimedia.org/wikipedia/en/wiki/Dublin_core</a><br/>
+Faceted classification: <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Faceted_classification">https://secure.wikimedia.org/wikipedia/en/wiki/Faceted_classification</a><br/>
+GNU: GNU General Public License, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/GNU_General_Public_License">https://secure.wikimedia.org/wikipedia/en/wiki/GNU_General_Public_License</a><br/>
+JSONP: JSON with padding, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/JSONP">https://secure.wikimedia.org/wikipedia/en/wiki/JSONP</a><br/>
+LOD: Linked Open Data, <a href="http://linkeddata.org/">http://linkeddata.org/</a><br/>
+MongoDB: Document-oriented database, <a href="http://www.mongodb.org/">http://www.mongodb.org</a><br/>
+NoSQL: Not only SQL, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/NoSQL">https://secure.wikimedia.org/wikipedia/en/wiki/NoSQL</a><br/>
+OAI-MPH: Open Archives Initiative, <a href="http://www.openarchives.org/">http://www.openarchives.org/</a><br/>
+OCR: Optical character recognition, <a href="https://secure.wikimedia.org/wikipedia/nl/wiki/Optical_character_recognition">https://secure.wikimedia.org/wikipedia/nl/wiki/Optical_character_recognition</a><br/>
+Open Source: software that is available in source code form, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Open-source_software">https://secure.wikimedia.org/wikipedia/en/wiki/Open-source_software</a><br/>
+OWLIM: Commercial RDF database with SPARQL backend, <a href="http://www.ontotext.com/owlim">http://www.ontotext.com/owlim</a><br/>
+Proprietary: Exclusive right of the copyright holder, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Proprietary_software">https://secure.wikimedia.org/wikipedia/en/wiki/Proprietary_software</a><br/>
+RDF: Resource Description Framework, <a href="www.w3.org/RDF/">http://www.w3.org/RDF/</a><br/>
+Semantic Web: Man-made woven web of data, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Semantic_Web">https://secure.wikimedia.org/wikipedia/en/wiki/Semantic_Web</a><br/>
+SIWA: Schema for Integration of Web Applications, <a href="http://www.kbresearch.nl/SIWA/">http://www.kbresearch.nl/SIWA</a><br/>
+SKOS: Simple Knowledge Organization System, <a href="www.w3.org/2004/02/skos/">http://www.w3.org/2004/02/skos/</a><br/>
+SOLR/Lucene: open-source search server, <a href="https://lucene.apache.org/solr/">https://lucene.apache.org/solr/</a><br/>
+SPARQL: Simple Protocol and RDF Query Language, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/SPARQL">https://secure.wikimedia.org/wikipedia/en/wiki/SPARQL</a><br/>
+SRU: Search/Retrieve via URL, <a href="http://www.loc.gov/standards/sru/">http://www.loc.gov/standards/sru/</a><br/>
+XML: Extensible Markup Language, <a href="https://secure.wikimedia.org/wikipedia/nl/wiki/Extensible_Markup_Language">https://secure.wikimedia.org/wikipedia/nl/wiki/Extensible_Markup_Language</a><br/>
+XSL: EXtensible Stylesheet Language, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Xsl">https://secure.wikimedia.org/wikipedia/en/wiki/Xsl</a><br/>
+XSLT: Extensible Stylesheet Language Transformations, <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Xslt">https://secure.wikimedia.org/wikipedia/en/wiki/Xslt</a><br/>
+
+<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" style="float: right" height="31" width="88" /></a>
+
+</p>
+               
+</div>
+
+
+</body>
+
+</html>
+

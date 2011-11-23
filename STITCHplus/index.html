@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>STITCHPlus - KBresearch</title>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+    <link href="http://www.kbresearch.nl/kbresearch.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="main">
+
+<a href="http://www.kb.nl/">
+<img alt="afbeelding" src="img/logo_kb.jpg" style="float: left; border: 0" /></a>
+
+
+<a href="http://www.catchplus.nl/"><img alt="afbeelding" src="http://www.catchplus.nl/wp-content/themes/catchplus/images/logo.gif" style="float: right" width="100" /></a><h1>STITCHPlus</h1><br/><br/><br/><br/><br/>
+
+<a href="http://www.kbresearch.nl/">KB Research</a> &nbsp; <a href="#">STITCHPlus</a>
+<br />
+<hr />
+<br /><br />
+<h2>Over STITCHPlus</h2>
+<p>
+De onderzoeksresultaten uit het CATCH-project STITCH vormen de basis voor de ontwikkeling van tools, om thesauri en classificatiesystemen semantisch aan elkaar koppelen, te beheren, en te gebruiken voor het verrijken van zoekvragen en het dieper ontsluiten van thematiek.<br /><br />
+Hierbij wordt de situatie binnen de KB als uitgangspunt gebruikt. Daarnaast is er behoefte aan meer aansluiting op het beschrijvingssysteem van zowel de Openbare Bibliotheken in Nederland, als internationale beschrijvingssystemen.<br /><br />
+Door de tools die ontwikkeld worden wordt de interoperabiliteit met andere collecties sterk vergroot. Ook wordt het onderhoud van de thesaurus en het toekennen van trefwoorden veel eenvoudiger, net als de zoekfunctionaliteit. De toolset biedt andere instellingen de mogelijkheid om hun vocabulaires (semi-)automatisch aan elkaar en aan bestaande collecties te koppelen, of om de eindgebruiker in te zetten.<br /><br />
+
+Hieronder worden alle deelproducten (deliverables) kort toegelicht. Tevens zijn er links naar eventuele bijbehorende broncode en online demo's.
+</p><br /><br />
+
+
+<h2>Crowd sourcing tool: semantic tagger</h2>
+<h3>Deliverable D2.7.12</h3>
+<p>
+De semantic tagger wordt ingezet om de eindgebruiker zelf in staat te stellen records, websites, alles wat te identificeren is met een URL/URI te voorzien van een link naar een concept uit een open data bron. 
+ Het product is een webapplicatie die via een paar regels code als plugin geladen kan worden in elke willekeurige website. Het idee is dat de tagger wordt opgehaald, voorzien van een uniek ID (bij voorkeur een URL) van de website waarin de tagger gebruikt wordt.
+</p>
+<br />
+<a href="http://opendatachallenge.kbresearch.nl/demo3.html">[demo]</a> <a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.12_sem_tagger/tagall_jsonp">[source]</a> <a href="doc/D2.7.12 - Crowd sourcing tool semantic tagging.doc">Lees meer...</a>
+<br /><br />
+
+
+<h2>Matching concepten met DBPedia</h2>
+<h3>Deliverable D2.7.11.2</h3>
+<p>
+De matcher voor concepten wordt gebruikt om concepten in de KB thesaurus (D2.7.1) te linken aan de corresponderende lemma’s in DBPedia door deze lemma’s lokaal te indexeren met SOLR/Lucene. Deze links kunnen gebruikt worden om de gebruiker dieper op een onderwerp in te kunnen gaan en op termijn zijn zoekvraag uit te breiden naar andere gelinkte bibliotheken. 
+</p>
+<br />
+<a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.11.2_DBP_Matching">[source]</a> <a href="doc/D2.7.11.2 - Matching concepten met DBPedia.doc">Lees meer...</a>
+<br /><br />
+
+
+<h2>Matching persoonsnamen met VIAF Authority File</h2>
+<h3>Deliverable D2.7.11.1</h3>
+<p>
+De matcher voor persoonsnamen wordt gebruikt om persoonsnamen in de KB thesaurus (D2.7.1) te linken aan de corresponderende personen in de VIAF authority file via de open search endpoint. Deze links kunnen gebruikt worden om de gebruiker dieper op een onderwerp in te kunnen gaan en op termijn zijn zoekvraag uit te breiden naar andere gelinkte bibliotheken. 
+</p>
+<br />
+<a href="http://kbresearch.nl/general/viaf_demo/">[demo]</a> <a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.11.1_VIAF_Matching">[source]</a> <a href="doc/D2.7.11.1 - Matching persoonsnamen met VIAF.doc">Lees meer...</a>
+<br /><br />
+
+<h2>Toegang tot verrijkte metadatabeschrijvingen</h2>
+<h3>Deliverable D2.7.9.2</h3>
+<p>
+Het product is een webapplicatie die een ppn-nummer uit de SKOS thesaurus als parameter ontvangt en de bijbehorende links naar de DBPedia thesaurus en de VIAF authority file teruggeeft in JSON-, RDF-, of HTML formaat. De service ontvangt een ppn-nummer (op te halen uit de SKOS-thesauri1)of een URI uit DBPedia of VIAF en geeft de bijbehorende links terug. Verschillende formaten zijn op te halen door de extensie te wijzigen (.json, .rdf, of .html). Standaard wordt een JSON response teruggegeven.
+</p>
+<br />
+<a href="http://kbresearch.nl/general/lod_new/get/GGC-THES:AC:068350767.rdf">[demo]</a> <a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.9.2_enrich_doc">[source]</a> <a href="doc/D2.7.9.2 - Toegang tot verrijkte metadatabeschrijvingen.doc">Lees meer...</a>
+<br /><br />
+
+<h2>Harvesting mechanisme b.h.v. vocabulaire-data</h2>
+<h3>Deliverable D2.7.9</h3>
+<p>
+Het harvestingmechanisme is in ontwikkelomgeving reeds in 2008 geïntegreerd in de OAI endpoint van de KB door de afdeling IT. Deze ontwikkelomgeving is echter alleen binnen het KB domein beschikbaar. Voor onderzoeksdoeleinden (zoals overlegd met OCLC) is de thesaurus per 01-04-2011 vrijgegeven en wordt deze deliverable als opgeleverd beschouwd.
+Tevens wordt de broncode van twee gepreconfigureerde harvesters vrijgegeven per 01-04-2011 in de programmeertalen java (voor stabiele harvests) en ruby (voor snel testen).
+</p>
+<br />
+<a href="http://services.kb.nl/mdo/oai?verb=GetRecord&amp;set=GGC-THES&amp;identifier=GGC-THES:AC:073468320&amp;metadataPrefix=dcx">[demo]</a> <a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.9_harvesting">[source]</a> <a href="doc/D2.7.9 - Harvesting Mechanisme.doc">Lees meer...</a>
+<br /><br />
+
+<h2>Pijplijn modules voor periodieke updates</h2>
+<h3>Deliverable D2.7.5</h3>
+<p>
+De thesauri in RDF/SKOS-formaat, gebruikt in het STITCH+ project, worden op periodieke basis via OAI up-to-date gehouden bij OCLC/Pica. Dit is nu onderdeel van de productieomgeving van de IT infrastructuur van de KB. De data worden beschikbaar gesteld via http://data.kbresearch.nl.
+</p>
+<br />
+<a href="http://data.kb.nl/thesaurus/070958564">[demo]</a> <a href="doc/D2.7.5 - Pijplijnmodule periodieke update.doc">Lees meer...</a>
+<br /><br />
+
+<h2>Lokale Triple Store</h2>
+<h3>Deliverable D2.7.2</h3>
+<p>
+De thesaurus van de Koninklijke Bibliotheek is ingeladen in een lokale triple store. Momenteel bevat de thesaurus 1,2 miljoen onderwerpen uit verschillende catalogi (o.a. NBD Biblion, GTT en persoonsnamen), tezamen 7,3 miljoen triples.  Dagelijks worden de nieuwe updates in de thesaurus geharvest en opgenomen in deze triple store.
+</p>
+<br />
+<a href="https://github.com/STITCHplus/STITCHplus/tree/master/D2.7.2_triple_store_sparql_endpoint">[source]</a> <a href="doc/D2.7.2 - Lokale triple store.doc">Lees meer...</a><br /><br />
+
+<h2>Een vijftal naar SKOS geconverteerde vocabulaires</h2>
+<h3>Deliverable D2.7.1</h3>
+<p>
+Er is een aantal vocabulaires geconverteerd naar SKOS, waaronder de GTT, Brinkman en Biblion en de authority data uit de GGC. De methodieken die hiervoor gebruikt zijn vallen onder het STITCH project, er zijn geen nieuwe conversies gemaakt. Onderstaande lijst toont per vocabulaire het aantal concepten dat momenteel in de SKOS-thesaurus van de KB is opgenomen.<br />
+</p>
+<br />
+<a href="http://data.kb.nl/thesaurus/070958564">[demo]</a> <a href="doc/D2.7.1 - SKOS vocabulaires.doc">Lees meer...</a>
+ <p style="float: right">
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+  </p>
+</div>
+</body>
+
+</html>
+

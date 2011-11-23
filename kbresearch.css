@@ -1,0 +1,32 @@
+* { margin: 0;
+    padding: 0;
+    font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+h1, h2, h3, h4, h5 { font-family: tahoma,verdana,arial,geneva,sans-serif; }
+
+img { border: 0 }
+
+h1 { text-align: center; color: #003266; }
+
+h2 { color: #B99200; margin-bottom: 10px; }
+
+h3 { font-weight: normal; }
+
+body, p  {
+    font:   12.9667px tahoma,verdana,arial,geneva;
+    line-height: 18px;
+}
+
+#main {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 966px;
+    background: #ededed;
+    padding: 20px;
+}
+
+a, a:link, a:visited, a:active  { color: #000; font: 12.9667px tahoma,verdana,arial,geneva; }
+a:hover  { color: #ff0000; font: 12.9667px tahoma,verdana,arial,geneva; }
+
